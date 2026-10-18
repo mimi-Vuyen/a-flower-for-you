@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff9f2">
+    <meta
+      name="description"
+      content="Một món quà nhỏ dành tặng chị nhân ngày Phụ nữ Việt Nam 20/10."
+    >
+    <title>A Flower For You — 一輪の花</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Serif+JP:wght@400;500&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="gift" aria-labelledby="page-title" data-state="idle" data-started="false">
+      <div class="sakura-petals" aria-hidden="true">
+        <span class="sakura-petal sakura-petal--one"></span>
+        <span class="sakura-petal sakura-petal--two"></span>
+        <span class="sakura-petal sakura-petal--three"></span>
+        <span class="sakura-petal sakura-petal--four"></span>
+        <span class="sakura-petal sakura-petal--five"></span>
+        <span class="sakura-petal sakura-petal--six"></span>
+        <span class="sakura-petal sakura-petal--seven"></span>
+      </div>
+
+      <div class="audio-control">
+        <button
+          class="audio-toggle"
+          type="button"
+          aria-label="Bật nhạc nền"
+          aria-pressed="false"
+        >
+          <svg class="audio-toggle__icon audio-toggle__icon--on" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10v4h4l5 4V6l-5 4H4Z"/>
+            <path d="M16 9a5 5 0 0 1 0 6M18.5 6.5a9 9 0 0 1 0 11"/>
+          </svg>
+          <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10v4h4l5 4V6l-5 4H4Z"/>
+            <path d="m17 9 5 6m0-6-5 6"/>
+          </svg>
+        </button>
+        <audio
+          class="background-audio"
+          src="assets/music/bloom.mp3"
+          preload="none"
+          loop
+          aria-label="Cherry Blossom Love — 薄紅の恋"
+        ></audio>
+        <span class="visually-hidden audio-status" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="gift__eyebrow" aria-hidden="true">
+        <span class="gift__eyebrow-line"></span>
+        <span>20 · 10</span>
+        <span class="gift__eyebrow-line"></span>
+      </div>
+
+      <header class="greeting">
+        <p class="greeting__japanese" lang="ja">あなたへ、小さな贈り物。</p>
+        <h1 class="greeting__translation" id="page-title">Một món quà nhỏ dành cho Tỷ.</h1>
+      </header>
+
+      <figure class="garden" aria-label="Một hạt giống đang chờ nở thành hoa hồng trong chậu nhỏ">
+        <div class="garden__halo" aria-hidden="true"></div>
+        <svg
+          class="plant"
+          viewBox="0 0 240 330"
+          role="img"
+          aria-labelledby="flower-title"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title id="flower-title">Hạt giống lớn lên thành một bông hoa màu hồng</title>
+          <ellipse class="plant__shadow" cx="120" cy="291" rx="78" ry="8"/>
+
+          <g class="plant__growth">
+            <path
+              class="plant__stem"
+              d="M120 256 C119 226 124 201 120 176 C117 153 121 133 120 112"
+            />
+            <path class="plant__leaf plant__leaf--left" d="M119 211 C101 206 91 194 91 180 C106 182 117 191 120 205 Z"/>
+            <path class="plant__leaf-vein plant__leaf-vein--left" d="M96 184 C104 191 111 198 117 206"/>
+            <path class="plant__leaf plant__leaf--right" d="M121 187 C139 183 149 171 149 157 C134 159 124 168 120 181 Z"/>
+            <path class="plant__leaf-vein plant__leaf-vein--right" d="M144 161 C136 168 129 175 123 183"/>
+
+            <g class="plant__bud" aria-hidden="true">
+              <path class="plant__bud-calyx" d="M111 111 Q114 97 120 88 Q126 97 129 111 L124 108 L120 113 L116 108 Z"/>
+              <ellipse class="plant__bud-petal" cx="120" cy="98" rx="8" ry="13"/>
+            </g>
+
+            <g class="plant__flower">
+              <ellipse class="petal petal--top" cx="120" cy="96" rx="12" ry="19"/>
+              <ellipse class="petal petal--upper-right" cx="135" cy="106" rx="12" ry="19" transform="rotate(72 135 106)"/>
+              <ellipse class="petal petal--lower-right" cx="129" cy="123" rx="12" ry="19" transform="rotate(144 129 123)"/>
+              <ellipse class="petal petal--lower-left" cx="111" cy="123" rx="12" ry="19" transform="rotate(216 111 123)"/>
+              <ellipse class="petal petal--upper-left" cx="105" cy="106" rx="12" ry="19" transform="rotate(288 105 106)"/>
+              <circle class="plant__center" cx="120" cy="111" r="8"/>
+            </g>
+          </g>
+
+          <ellipse class="plant__seed" cx="120" cy="258" rx="6" ry="9"/>
+          <path class="pot__rim" d="M57 251 Q120 242 183 251 L178 263 Q120 269 62 263 Z"/>
+          <path class="pot__body" d="M66 265 Q120 272 174 265 L164 314 Q120 324 76 314 Z"/>
+          <path class="pot__highlight" d="M78 274 Q82 291 84 306"/>
+          <path class="pot__base" d="M74 315 Q120 321 166 315 L162 322 Q120 329 78 322 Z"/>
+        </svg>
+        <figcaption class="garden__caption" aria-live="polite">Chạm nhẹ để gieo một điều dịu dàng</figcaption>
+      </figure>
+
+      <section class="message" aria-live="polite" aria-atomic="true" hidden>
+        <p class="message__japanese" lang="ja">あなたに、優しい日々が訪れますように。</p>
+        <p class="message__vietnamese">Mong những ngày tháng dịu dàng sẽ đến bên Tỷ.</p>
+        <p class="message__occasion">Chúc Tỷ một ngày 20/10 thật bình yên và nhiều niềm vui. 🌷</p>
+        <p class="message__signature">— From Mimi, with love.</p>
+      </section>
+
+      <div class="actions">
+        <button class="action-button" type="button">
+          <span class="action-button__start">育ててみて <span lang="vi">· Thử trồng nhé!</span></span>
+          <span class="action-button__again">Ngắm hoa lần nữa</span>
+        </button>
+      </div>
+
+      <p class="gift__footnote" aria-hidden="true">Made with a little love</p>
+    </main>
+  </body>
+</html>

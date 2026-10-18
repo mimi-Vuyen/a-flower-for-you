@@ -1,0 +1,817 @@
+:root {
+  color-scheme: light;
+  --ivory: #fff9f2;
+  --pink: #f4b8c5;
+  --rose: #c98595;
+  --sage: #8fae91;
+  --brown: #765b52;
+  --soft-brown: #9a8178;
+  --serif: "Playfair Display", "Noto Serif JP", Georgia, serif;
+  --sans: "DM Sans", "Noto Serif JP", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--ivory);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  color: var(--brown);
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(244, 224, 214, 0.34), transparent 45%),
+    var(--ivory);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+.gift {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px 20px 26px;
+  text-align: center;
+}
+
+.gift > :not(.sakura-petals):not(.audio-control) {
+  z-index: 1;
+}
+
+.audio-control {
+  position: fixed;
+  z-index: 5;
+  top: 10px;
+  right: 10px;
+}
+
+.audio-toggle {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(201, 133, 149, 0.35);
+  border-radius: 50%;
+  color: var(--brown);
+  background: rgba(255, 249, 242, 0.88);
+  box-shadow: 0 3px 12px rgba(118, 91, 82, 0.08);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.audio-toggle:hover {
+  border-color: var(--rose);
+  background: #fffdf9;
+  transform: translateY(-1px);
+}
+
+.audio-toggle:focus-visible {
+  outline: 3px solid rgba(118, 91, 82, 0.56);
+  outline-offset: 3px;
+}
+
+.audio-toggle__icon {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.audio-toggle__icon--off,
+.audio-toggle[aria-pressed="false"] .audio-toggle__icon--on {
+  display: none;
+}
+
+.audio-toggle[aria-pressed="false"] .audio-toggle__icon--off {
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.sakura-petals {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sakura-petal {
+  position: absolute;
+  top: -8vh;
+  left: var(--petal-left);
+  width: var(--petal-size);
+  height: var(--petal-height);
+  border-radius: 85% 15% 75% 25%;
+  background: #e9aebc;
+  opacity: 0;
+  transform: rotate(var(--petal-rotation));
+  animation: sakura-drift var(--petal-duration) linear var(--petal-delay) infinite;
+}
+
+.sakura-petal--one {
+  --petal-left: 8%;
+  --petal-size: 12px;
+  --petal-height: 9px;
+  --petal-rotation: 18deg;
+  --petal-duration: 23s;
+  --petal-delay: -15s;
+}
+
+.sakura-petal--two {
+  --petal-left: 23%;
+  --petal-size: 9px;
+  --petal-height: 7px;
+  --petal-rotation: 72deg;
+  --petal-duration: 27s;
+  --petal-delay: -7s;
+}
+
+.sakura-petal--three {
+  --petal-left: 39%;
+  --petal-size: 11px;
+  --petal-height: 8px;
+  --petal-rotation: 38deg;
+  --petal-duration: 25s;
+  --petal-delay: -20s;
+}
+
+.sakura-petal--four {
+  --petal-left: 57%;
+  --petal-size: 8px;
+  --petal-height: 6px;
+  --petal-rotation: 105deg;
+  --petal-duration: 29s;
+  --petal-delay: -11s;
+}
+
+.sakura-petal--five {
+  --petal-left: 73%;
+  --petal-size: 13px;
+  --petal-height: 10px;
+  --petal-rotation: 52deg;
+  --petal-duration: 26s;
+  --petal-delay: -23s;
+}
+
+.sakura-petal--six {
+  --petal-left: 89%;
+  --petal-size: 10px;
+  --petal-height: 8px;
+  --petal-rotation: 128deg;
+  --petal-duration: 24s;
+  --petal-delay: -4s;
+}
+
+.sakura-petal--seven {
+  --petal-left: 96%;
+  --petal-size: 7px;
+  --petal-height: 5px;
+  --petal-rotation: 12deg;
+  --petal-duration: 28s;
+  --petal-delay: -18s;
+}
+
+.gift__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: auto 0 20px;
+  color: var(--rose);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+.gift__eyebrow-line {
+  width: 25px;
+  height: 1px;
+  background: #dfc7bc;
+}
+
+.greeting {
+  z-index: 1;
+}
+
+.greeting__japanese {
+  margin: 0 0 7px;
+  font-family: "Noto Serif JP", var(--serif);
+  font-size: clamp(19px, 5vw, 23px);
+  letter-spacing: 0.08em;
+}
+
+.greeting__translation {
+  margin: 0;
+  color: var(--soft-brown);
+  font-family: var(--serif);
+  font-size: clamp(15px, 4vw, 18px);
+  font-weight: 500;
+}
+
+.garden {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(100%, 330px);
+  margin: 7px 0 0;
+}
+
+.garden__halo {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  width: 214px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 133, 149, 0.15);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 184, 197, 0.13), transparent 68%);
+  opacity: 0.45;
+  transform: translateX(-50%);
+  transition:
+    opacity 1.8s ease,
+    background 1.8s ease;
+  animation: halo-breathe 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.gift[data-state="seed"] .garden__halo,
+.gift[data-state="sprout"] .garden__halo,
+.gift[data-state="leaves"] .garden__halo,
+.gift[data-state="bud"] .garden__halo,
+.gift[data-state="bloom"] .garden__halo {
+  opacity: 0.68;
+}
+
+.gift[data-state="completed"] .garden__halo {
+  opacity: 0.86;
+  background: radial-gradient(circle, rgba(244, 184, 197, 0.32), rgba(244, 184, 197, 0.04) 62%, transparent 74%);
+}
+
+.plant {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: min(240px, 100%);
+  height: auto;
+  aspect-ratio: 8 / 11;
+  overflow: visible;
+}
+
+.plant__shadow {
+  fill: rgba(118, 91, 82, 0.12);
+  transition: rx 1s ease;
+}
+
+.plant__stem {
+  fill: none;
+  stroke: #7f9f80;
+  stroke-dasharray: 190;
+  stroke-dashoffset: 190;
+  stroke-linecap: round;
+  stroke-width: 4;
+  transition: stroke-dashoffset 2s cubic-bezier(0.22, 0.7, 0.25, 1);
+}
+
+.plant__leaf {
+  fill: var(--sage);
+  opacity: 0;
+  transform: scale(0.2);
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  transition:
+    opacity 0.7s ease,
+    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.plant__leaf--left {
+  transform-origin: bottom right;
+}
+
+.plant__leaf--right {
+  transform-origin: bottom left;
+}
+
+.plant__leaf-vein {
+  fill: none;
+  stroke: rgba(255, 249, 242, 0.58);
+  stroke-linecap: round;
+  stroke-width: 1.2;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.35s;
+}
+
+.plant__leaf--right,
+.plant__leaf-vein--right {
+  transition-delay: 0.7s;
+}
+
+.plant__bud {
+  opacity: 0;
+  transform: scale(0.2);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition:
+    opacity 0.7s ease,
+    transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.plant__bud-calyx {
+  fill: #7f9f80;
+}
+
+.plant__bud-petal {
+  fill: #eaa7b5;
+  stroke: rgba(201, 133, 149, 0.65);
+  stroke-width: 1;
+}
+
+.petal {
+  fill: var(--pink);
+  stroke: rgba(201, 133, 149, 0.55);
+  stroke-width: 1;
+  opacity: 0;
+  transform: scale(0.08);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 1s ease,
+    transform 1.2s cubic-bezier(0.18, 0.75, 0.22, 1);
+}
+
+.petal--upper-right,
+.petal--lower-left {
+  fill: #f0aebd;
+}
+
+.petal--lower-right,
+.petal--upper-left {
+  fill: #f7c8d0;
+}
+
+.plant__center {
+  fill: #d9a45f;
+  opacity: 0;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.7s ease 0.35s,
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+}
+
+.plant__seed {
+  fill: #a87954;
+  stroke: #8f684d;
+  stroke-width: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.pot__rim {
+  fill: #d9a99a;
+  stroke: #c99486;
+  stroke-width: 1;
+}
+
+.pot__body {
+  fill: #e6b8a8;
+  stroke: #c99486;
+  stroke-width: 1;
+}
+
+.pot__highlight {
+  fill: none;
+  stroke: rgba(255, 249, 242, 0.58);
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.pot__base {
+  fill: #d39f90;
+}
+
+.garden__caption {
+  position: relative;
+  z-index: 1;
+  color: #a28a7f;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  transition: opacity 0.45s ease;
+}
+
+.actions {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.action-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 25px;
+  border: 1px solid var(--rose);
+  border-radius: 999px;
+  color: #fffdf9;
+  background: var(--rose);
+  box-shadow: 0 5px 14px rgba(201, 133, 149, 0.15);
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.action-button:hover {
+  background: #bd7889;
+  box-shadow: 0 7px 18px rgba(201, 133, 149, 0.23);
+  transform: translateY(-1px);
+}
+
+.action-button:focus-visible {
+  outline: 3px solid rgba(118, 91, 82, 0.56);
+  outline-offset: 4px;
+}
+
+.action-button:disabled {
+  cursor: default;
+}
+
+.action-button__start,
+.action-button__again {
+  display: inline;
+}
+
+.action-button__again {
+  display: none;
+}
+
+.action-button__start span {
+  font-family: "Noto Serif JP", var(--sans);
+  font-size: 13px;
+}
+
+.message {
+  width: min(100%, 480px);
+  margin: 0;
+}
+
+.message[hidden] {
+  display: none;
+}
+
+.message__japanese {
+  margin: 0 0 8px;
+  font-family: "Noto Serif JP", var(--serif);
+  font-size: clamp(16px, 4.4vw, 20px);
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+}
+
+.message__vietnamese {
+  margin: 0;
+  color: var(--soft-brown);
+  font-family: var(--serif);
+  font-size: clamp(14px, 3.8vw, 16px);
+  line-height: 1.7;
+}
+
+.message__occasion {
+  margin: 13px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.message__signature {
+  margin: 11px 0 0;
+  color: var(--rose);
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.message > p {
+  opacity: 0;
+  animation: message-line-reveal 0.65s ease both;
+}
+
+.message > .message__japanese {
+  animation-delay: 0s;
+}
+
+.message > .message__vietnamese {
+  animation-delay: 0.25s;
+}
+
+.message > .message__occasion {
+  animation-delay: 0.5s;
+}
+
+.message > .message__signature {
+  animation-delay: 0.75s;
+}
+
+.gift[data-state="idle"]:not([data-resetting="true"]) .action-button {
+  display: inline-flex;
+}
+
+.gift[data-state="completed"] .action-button {
+  display: inline-flex;
+  visibility: hidden;
+  animation: action-button-reveal 0.35s ease 1.45s forwards;
+}
+
+.gift__footnote {
+  position: relative;
+  margin: auto 0 0;
+  padding-top: 20px;
+  color: #b19b90;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.gift[data-state="sprout"] .plant__seed,
+.gift[data-state="leaves"] .plant__seed,
+.gift[data-state="bud"] .plant__seed,
+.gift[data-state="bloom"] .plant__seed,
+.gift[data-state="completed"] .plant__seed {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.gift[data-state="seed"] .plant__seed {
+  animation: seed-wiggle 0.5s ease-in-out infinite;
+}
+
+.gift[data-state="sprout"] .plant__stem,
+.gift[data-state="leaves"] .plant__stem,
+.gift[data-state="bud"] .plant__stem,
+.gift[data-state="bloom"] .plant__stem,
+.gift[data-state="completed"] .plant__stem {
+  stroke-dashoffset: 0;
+}
+
+.gift[data-state="leaves"] .plant__leaf,
+.gift[data-state="bud"] .plant__leaf,
+.gift[data-state="bloom"] .plant__leaf,
+.gift[data-state="completed"] .plant__leaf {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gift[data-state="leaves"] .plant__leaf-vein,
+.gift[data-state="bud"] .plant__leaf-vein,
+.gift[data-state="bloom"] .plant__leaf-vein,
+.gift[data-state="completed"] .plant__leaf-vein {
+  opacity: 1;
+}
+
+.gift[data-state="bud"] .plant__bud {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gift[data-state="bloom"] .plant__bud,
+.gift[data-state="completed"] .plant__bud {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.gift[data-state="bloom"] .petal,
+.gift[data-state="completed"] .petal {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gift[data-state="bloom"] .petal--upper-right,
+.gift[data-state="completed"] .petal--upper-right {
+  transition-delay: 0.15s;
+}
+
+.gift[data-state="bloom"] .petal--lower-right,
+.gift[data-state="completed"] .petal--lower-right {
+  transition-delay: 0.3s;
+}
+
+.gift[data-state="bloom"] .petal--lower-left,
+.gift[data-state="completed"] .petal--lower-left {
+  transition-delay: 0.45s;
+}
+
+.gift[data-state="bloom"] .petal--upper-left,
+.gift[data-state="completed"] .petal--upper-left {
+  transition-delay: 0.6s;
+}
+
+.gift[data-state="bloom"] .plant__center,
+.gift[data-state="completed"] .plant__center {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gift[data-state="completed"] .plant__flower {
+  animation: flower-sway 4.5s ease-in-out 1.4s infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+}
+
+.gift[data-state="completed"] .plant__shadow {
+  rx: 83px;
+}
+
+.gift[data-state]:not([data-state="idle"]) .greeting,
+.gift[data-state]:not([data-state="idle"]) .gift__eyebrow {
+  display: none;
+}
+
+.gift[data-started="true"] .action-button__start {
+  display: none;
+}
+
+.gift[data-started="true"] .action-button__again {
+  display: inline;
+}
+
+.gift[data-state="completed"] .action-button {
+  min-width: 190px;
+}
+
+.gift[data-state="seed"] .garden__caption,
+.gift[data-state="sprout"] .garden__caption,
+.gift[data-state="leaves"] .garden__caption,
+.gift[data-state="bud"] .garden__caption,
+.gift[data-state="bloom"] .garden__caption,
+.gift[data-state="completed"] .garden__caption {
+  opacity: 1;
+}
+
+.gift[data-resetting="true"] *,
+.gift[data-resetting="true"] *::before,
+.gift[data-resetting="true"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@keyframes sakura-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -5vh, 0) rotate(var(--petal-rotation));
+  }
+
+  12% {
+    opacity: 0.22;
+  }
+
+  50% {
+    transform: translate3d(24px, 54vh, 0) rotate(calc(var(--petal-rotation) + 150deg));
+  }
+
+  88% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-18px, 112vh, 0) rotate(calc(var(--petal-rotation) + 320deg));
+  }
+}
+
+@keyframes halo-breathe {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(0.96);
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.04);
+  }
+}
+
+@keyframes message-line-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes action-button-reveal {
+  to {
+    visibility: visible;
+  }
+}
+
+@keyframes seed-wiggle {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-9deg) translateX(-1px);
+  }
+
+  75% {
+    transform: rotate(9deg) translateX(1px);
+  }
+}
+
+@keyframes flower-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@media (max-width: 380px) {
+  .gift {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .plant {
+    width: 220px;
+  }
+
+  .message__occasion {
+    max-width: 330px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-height: 760px) {
+  .gift {
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .sakura-petal {
+    animation: none;
+    display: none;
+  }
+
+  .garden__halo {
+    animation: none;
+  }
+}
